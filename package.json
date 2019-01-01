@@ -1,0 +1,26 @@
+{
+  "name": "mvcmovielib",
+  "version": "1.0.0",
+  "description": "Movie store tutorial code for MVC concept in express, node, hbs, mongodb",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "keywords": [
+    "mvc",
+    "nodejs"
+  ],
+  "dependencies": {
+    "express": "*",
+    "express-validator": "*",
+    "body-parser": "*",
+    "hbs": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  },
+  "author": "md ariful islam",
+  "license": "ISC"
+}

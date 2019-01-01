@@ -1,0 +1,121 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">
+        <i class="fas fa-mask"></i> Movie Store
+    </h1>
+    <p class="lead text-muted">
+        This is ideal platform based on MVC pattern using expressjs, nodejs, mongodb, handlebarjs, bootstrap etc. This landing page only displays 10 recent entries.
+        This apps is only for educational use of web programming. Not for commercial use.
+    </p>
+    <p>
+      <a href="/movie/create" class="btn btn-primary my-2" data-toggle="modal" data-target="#movieFormModal">
+      <i class="fas fa-plus-circle"></i> Add Movie Data
+      </a>
+    </p>
+  </div>
+</section>
+<div class="album py-5 bg-light">
+  <div class="container">
+    {{#if movies}}
+    <div class="row">
+      {{#each movies}}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="/images/site/spiderman3.jpg" alt="Card image cap">
+          <div class="card-body">
+            <div class="card-text">
+            Title: {{title}}<br>
+            Author: {{author}} <br>
+            Category: {{category}} <br>
+            Budget: {{budget}} Millions<br>
+            Released: {{released}}
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="/movie/detail/{{_id}}" class="btn btn-sm btn-primary">Detail</a>
+                <a href="/movie/update/{{_id}}" class="btn btn-sm btn-success">Update</a>
+                <a href="/movie/delete/{{_id}}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+              </div>
+              <small class="text-muted">Added {{@index}} mins</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="/images/site/dark_knight_rise.jpg" alt="Card image cap">
+          <div class="card-body">
+            Title: Spider Man 3
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="/images/site/ironman2.jpg" alt="Card image cap">
+          <div class="card-body">
+            Title: Iron Man 2
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="/images/site/dark_knight_rise.jpg" alt="Card image cap">
+          <div class="card-body">
+            Title: Dark Knight Rises
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</div>
+
+<!-- Modal create movie form-->
+<div class="modal fade" id="movieFormModal" tabindex="-1" role="dialog" aria-labelledby="movieFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="movieFormModalLabel">Movie Create Form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/movie/create" method="POST">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="inputMovie">Movie Title</label>
+          <input type="text" name="title" class="form-control" id="inputMovie" placeholder="e.g Terminator">
+        </div>
+        <div class="form-group">
+          <label for="inputAuthor">Author</label>
+          <input type="text" name="author" class="form-control" placeholder="e.g Ariful">
+        </div>
+        <div class="form-group">
+          <label for="inputDirector">Director</label>
+          <input type="text" name="director" class="form-control" placeholder="e.g James Cameron">
+        </div>
+        <div class="form-group">
+          <label for="inputBudget">Budget</label>
+          <input type="number" name="budget" class="form-control" id="inputBudget" placeholder="e.g 5 millions">
+        </div>
+        <div class="form-group">
+          <label for="inputCatergory">Category</label>
+          <input type="text" name="category" class="form-control" id="inputCatergory" placeholder="e.g Action">
+        </div>
+        <div class="form-group">
+          <label for="inputReleased">Released Date</label>
+          <input type="text" name="released" class="form-control" id="datetimepicker1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

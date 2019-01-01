@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="card bg-dark text-white">
+      <img class="card-img" src="/images/site/spiderman3.jpg" alt="movie image cap">
+      <div class="card-img-overlay">
+        <h5 class="card-title">
+          Movie title: {{movie.title}}
+          </h5>
+        <p class="card-text">
+          {{movie.author}}
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            Last updated {{movie.updated}} mins ago
+          </small>
+        </p>
+          <a href="/movie/update/{{movie._id}}" class="btn btn-sm btn-success">Update</a>
+      </div>
+    </div>
+</div>
