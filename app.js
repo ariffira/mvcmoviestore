@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
+const HOST = 'localhost';
 const bodyParser = require("body-parser");
 const expressValidator = require('express-validator');
 //add routes modules
@@ -11,13 +12,12 @@ const movie = require('./routes/movie');
 // add mongoose package
 const mongoose = require('mongoose');
 // connect mongoose using localhost
-mongoose.connect('mongodb://localhost/mvcmovielib', {useNewUrlParser: true});
+mongoose.connect(process.env.DB_LINK, {useNewUrlParser: true});
 
 // Create the Express application object using top express() method
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // use modules
@@ -32,8 +32,8 @@ app.use('/', index);
 app.use('/movie', movie);
 
 // listen the server 
-app.listen(PORT, ()=> {
-    console.log("Server is running on port number:" + PORT);
+app.listen(PORT, HOST, ()=> {
+    console.log("Server is running on port number:" + PORT + ' and ' + HOST);
 });
 
 
