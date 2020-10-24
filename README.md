@@ -3,12 +3,13 @@ This apps is for basic experimental works based on nodje MVC concept, REST API a
 
 ## tools using:
 
-### mongoDB
+### mongoDB, mongoose
 ### nodejs
-### expressjs
-### handlebarjs
+### expressjs, dotenv, body-parser
+### handlebarjs(hbs)
 
-## version: 0.0.1
+## version: 0.1.0
 
-## Author: Md Ariful Islam
+## Author: Md Ariful Islam(mai)
+### made for fun and learn
 
