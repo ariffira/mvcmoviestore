@@ -1,5 +1,9 @@
 // add all required modules
 const express = require('express');
+// Create the Express application object using top express() method
+const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const HOST = 'localhost';
@@ -13,9 +17,6 @@ const movie = require('./routes/movie');
 const mongoose = require('mongoose');
 // connect mongoose using localhost
 mongoose.connect(process.env.DB_LINK, {useNewUrlParser: true});
-
-// Create the Express application object using top express() method
-const app = express();
 
 // view engine setup
 app.set('view engine', 'hbs');
