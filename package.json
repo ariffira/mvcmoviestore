@@ -4,8 +4,7 @@
   "description": "Movie store tutorial code for MVC concept in express, node, hbs, mongodb",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [
     "mvc",
@@ -21,6 +20,6 @@
   "devDependencies": {
     "nodemon": "*"
   },
-  "author": "md ariful islam",
+  "author": "Md Ariful Islam(mai)",
   "license": "ISC"
 }
