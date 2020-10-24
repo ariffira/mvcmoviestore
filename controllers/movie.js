@@ -2,16 +2,8 @@ const Movie = require('../models/movie');
 
 // CREATE AND SAVE MOVIE
 exports.create_movie = (req, res) => {
-    let { title, author, director, budget, category, released} = req.body;
-    const newMovie = new Movie({
-        title: title,
-        author: author,
-        director: director,
-        budget: budget,
-        category: category,
-        released: released,
-        added: Date.now()
-    });
+    req.body.added = Date.now();
+    const newMovie = new Movie(req.body);
     // create and save new movie data
     newMovie.save(err=> {
         if(err) throw err;
@@ -33,8 +25,7 @@ exports.all_movies = (req, res) => {
 // READ movie data by ID
 exports.detail_movie = (req,res) => {
     const movieId = req.params.id;
-    const query = Movie.findById(movieId);
-    query.exec((err, result)=> {
+    Movie.findById(movieId, (err, result)=> {
         if(err) throw err;
         res.render('detail', {
             pageTitle: 'Movie Detail data',
@@ -59,17 +50,8 @@ exports.update_movie_form = (req,res) => {
 }
 
 exports.update_movie_data = (req, res) => {
-    const newData = {
-        title: req.body.title,
-        author: req.body.author,
-        director: req.body.director,
-        budget: req.body.budget,
-        category: req.body.category,
-        released: req.body.released,
-        updated: Date.now()
-    };
-    const query = Movie.findByIdAndUpdate(req.body.id, newData);
-    query.exec(err=> {
+    req.body.updated = Date.now()
+    Movie.findByIdAndUpdate(req.body.id, req.body, err=> {
         if(err) throw err;
         res.redirect('/');
     });
@@ -77,8 +59,7 @@ exports.update_movie_data = (req, res) => {
 // Delete Movie data
 exports.delete_movie = (req, res) => {
     const movieId = req.params.id;
-    const query = Movie.findByIdAndDelete(movieId);
-    query.exec(err=> {
+    Movie.findByIdAndDelete(movieId, err=> {
         if(err) throw err;
         console.log('One movie has been deleted');
         res.redirect('/');
